@@ -4,7 +4,8 @@ import pandas as pd
 import tempfile
 import QPCR
 
-app = Flask(__name__)
+# 创建Flask应用时指定模板文件夹路径为当前目录
+app = Flask(__name__, template_folder=os.getcwd())
 
 
 @app.route('/')
