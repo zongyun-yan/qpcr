@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>qPCR数据处理</title>
+</head>
+<body>
+    <h1>qPCR数据处理</h1>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <label for="file">选择Excel文件:</label>
+        <input type="file" id="file" name="file" required><br><br>
+        <label for="control_samples">对照样本 (逗号分隔):</label>
+        <input type="text" id="control_samples" name="control_samples" required><br><br>
+        <label for="internal_controls">内参样本 (逗号分隔):</label>
+        <input type="text" id="internal_controls" name="internal_controls" required><br><br>
+        <label for="treatment_samples">处理样本 (逗号分隔):</label>
+        <input type="text" id="treatment_samples" name="treatment_samples" required><br><br>
+        <input type="submit" value="提交处理">
+    </form>
+</body>
+</html>
