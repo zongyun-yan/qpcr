@@ -17,5 +17,26 @@
         <input type="text" id="treatment_samples" name="treatment_samples" required><br><br>
         <input type="submit" value="提交处理">
     </form>
+    <a href="#" id="downloadPlotButton">下载图片结果</a>
+    <div id="downloadMessage"></div>
+    <script>
+        document.getElementById('downloadPlotButton').addEventListener('click', function() {
+            fetch('/download_plot')
+              .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+              .then(data => {
+                    const downloadMessage = document.getElementById('downloadMessage');
+                    downloadMessage.textContent = '图片下载成功';
+                })
+              .catch(error => {
+                    const downloadMessage = document.getElementById('downloadMessage');
+                    downloadMessage.textContent = '图片下载失败: '+ error.message;
+                });
+        });
+    </script>
 </body>
 </html>
