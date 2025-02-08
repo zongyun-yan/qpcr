@@ -1,4 +1,5 @@
 import os
+import logging
 from flask import Flask, request, render_template, send_file
 import pandas as pd
 import tempfile
@@ -6,6 +7,7 @@ import QPCR
 
 # 创建Flask应用时指定模板文件夹路径为当前目录
 app = Flask(__name__, template_folder=os.getcwd())
+logging.basicConfig(level=logging.DEBUG)
 
 
 @app.route('/')
@@ -15,6 +17,7 @@ def index():
 
 @app.route('/process', methods=['POST'])
 def process():
+    logging.debug('Received POST request to /process')
     file = request.files['file']
     with tempfile.NamedTemporaryFile(delete=False, suffix='.xlsx') as temp:
         file.save(temp.name)
